@@ -12,9 +12,9 @@ export default (engine, whitelist = []) => {
                     }
                     let tmp = result;
                     keys.forEach((key, index) => {
-                        if (index === keys.length - 1) {
+                        if (tmp && index === keys.length - 1) {
                             tmp[key] = fromJS(tmp[key]);
-                        } else {
+                        } else if (tmp) {
                             tmp = tmp[key];
                         }
                     });

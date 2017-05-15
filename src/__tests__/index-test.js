@@ -27,4 +27,11 @@ describe('decorator', () => {
             done();
         }, (error) => done(error));
     });
+    it('should support nested key not in already in state', (done) => {
+        const ret = decorator(ENGINE, [['nested', 'not-in-key', 'foo', 'bar']]);
+        ret.load().then((state) => {
+            assert.equal(state.nested['not-in-key'], undefined);
+            done();
+        }, (error) => done(error));
+    });
 });
